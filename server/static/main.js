@@ -1,3 +1,4 @@
+// TODO: we are relying on the native import(), which may not be available in our supported browsers; assess and replace with transpilation if necessary
 import { generateUUID } from './utilities.js';
 import {
   renderRecorder,
