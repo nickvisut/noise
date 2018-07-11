@@ -3,9 +3,9 @@
 ## FEATURES
 
 ### IN PROGRESS
+  - [ ] add support for FLAC (e.g., https://github.com/mmig/speech-to-flac)
 
 ### PLANNED
-  - [ ] add support for FLAC (e.g., https://github.com/mmig/speech-to-flac)
   - [ ] show user visual indicator that they can't change noises while recording
   - [ ] add wizard (easy sequential navigation)
   - [ ] simple text "pacing" timeline

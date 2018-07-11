@@ -1,3 +1,4 @@
+// TODO: we are relying on the native import(), which may not be available in our supported browsers; assess and replace with transpilation if necessary
 import { generateUUID } from './utilities.js';
 import {
   renderRecorder,
@@ -12,6 +13,7 @@ import {
   UPLOADED,
   statuses,
 } from './constants.js';
+import { encodeArrayToFlac, handleWorkerMessage } from './utilities/encode.js';
 
 /*
   State
@@ -178,6 +180,7 @@ const handleSuccess = function(stream) {
     const filename = `${state.recorder.filename.prefix}.${
       state.recorder.filename.sessionID
     }.webm`;
+
     state.recorder.status = UPLOADING;
 
     /* UI */
@@ -191,7 +194,23 @@ const handleSuccess = function(stream) {
     );
     // TODO: also render list (with isDisabled, maybe just a boolean instead of function, returning false)?
 
+
+    // Create a new web worker
+    // note that for each file you're going to encode
+    // you'll need to create a new web worker even
+    // if the previous one already finished
+    // This is because the "runtime" is shut down by
+    // Emscripten after one file was encoded
+    let worker = new Worker('static/tmp/worker/EmsWorkerProxy.js');
+    // Listen for messages by the worker
+    worker.onmessage = handleWorkerMessage;
+
+    // TODO: replace this timeout with properly sequenced call
+    // TODO: set up worker in proper place
+    window.setTimeout(() => encodeArrayToFlac(recordedChunks, filename, worker), 15000);
+    
     /* async I/O */
+    // upload the .webm file
     let blob = new Blob(recordedChunks);
     let file = new File([blob], filename);
     let data = new FormData();
