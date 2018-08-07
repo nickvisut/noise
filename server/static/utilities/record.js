@@ -101,24 +101,24 @@ function record({
       }
     };
 
-    if (navigator.webkitGetUserMedia)
-      navigator.webkitGetUserMedia(
-        { video: false, audio: true },
-        container.gotUserMedia,
-        container.userMediaFailed,
-      );
-    else if (navigator.mozGetUserMedia)
-      navigator.mozGetUserMedia(
-        { video: false, audio: true },
-        container.gotUserMedia,
-        container.userMediaFailed,
-      );
-    else
-      navigator.getUserMedia(
-        { video: false, audio: true },
-        container.gotUserMedia,
-        container.userMediaFailed,
-      );
+    // if (navigator.webkitGetUserMedia)
+    //   navigator.webkitGetUserMedia(
+    //     { video: false, audio: true },
+    //     container.gotUserMedia,
+    //     container.userMediaFailed,
+    //   );
+    // else if (navigator.mozGetUserMedia)
+    //   navigator.mozGetUserMedia(
+    //     { video: false, audio: true },
+    //     container.gotUserMedia,
+    //     container.userMediaFailed,
+    //   );
+    // else
+    //   navigator.getUserMedia(
+    //     { video: false, audio: true },
+    //     container.gotUserMedia,
+    //     container.userMediaFailed,
+    //   );
   };
 
   container.userMediaFailed = function(code) {
@@ -253,7 +253,8 @@ function record({
   return {
     startRecording: container.startRecording,
     stopRecording: container.stopRecording,
-    forceDownload: container.forceDownload,
+    gotUserMedia: container.gotUserMedia,
+    // forceDownload: container.forceDownload,
   };
 }
 

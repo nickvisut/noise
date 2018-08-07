@@ -306,10 +306,11 @@ const onRecordClick = function() {
   } // TODO: what do we do if it's starting or stopping? disable the interactions?
 };
 
-const handleRequestMediaPermissionsFailure = function(error) {
+// TODO: move into record.js or separate file?
+const handleRequestMediaPermissionsFailure = function(code) {
   // TODO: change the UI to indicate that nothing can be recorded
   // TODO: change explicitlyPermitted to be 3-valued or record the permission denial in some other way; keep in mind that we may not ever get an answer from the user if they dismiss the request
-  console.log(error);
+  console.log('grabbing microphone failed: ' + code);
 };
 
 const handleRequestMediaPermissionsSuccess = function(stream) {
@@ -352,10 +353,12 @@ const handleRequestMediaPermissionsSuccess = function(stream) {
         ...state.recorder.callbacks,
         startRecording: initialized.startRecording,
         stopRecording: initialized.stopRecording,
+        gotUserMedia: initialized.gotUserMedia
       },
     },
   });
 
+  state.callbacks.gotUserMedia();
   onRecordClick(); // manually trigger first time we've successfully gotten permissions to the mic since the user already clicked the Record button
 
   /* UI dispatch */

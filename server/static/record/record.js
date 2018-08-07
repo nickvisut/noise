@@ -43,6 +43,7 @@ function initializeRecorder({
   return {
     startRecording,
     stopRecording,
+    gotUserMedia: () => {}, // TODO: actually put something here; eventually merge the two record.js files
   };
 }
 

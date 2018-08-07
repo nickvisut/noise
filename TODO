@@ -47,6 +47,12 @@ FEATURES:
             [x] expose forceDownload() for later usage
             [x] hook up upload
           [ ] record.js: get rid of getUserMedia() code if determined that it's not needed
+            [x] record.js: study getUserMedia() code
+            [x] determine next steps
+            [x] expose gotUserMedia()
+            [x] call gotUserMedia()
+            [x] test
+            [ ] refactor
           [ ] change UI when there is an error
             [ ] record.js: pass in onRecordError
             [ ] record.js: add logic to execute onRecordError
