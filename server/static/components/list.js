@@ -10,7 +10,7 @@ const noiseTemplate = ({
   statusText,
 }) => `
   <li class="RecordingList-item">
-    <a class="Recording${
+    <span role="menuitem" class="Recording${
       selected ? ` Recording--selected` : ``
     }${
       recorded ? ` Recording--recorded` : ``
@@ -21,7 +21,7 @@ const noiseTemplate = ({
         <li class="Recording-item Recording-instructions" data-id="list-item-${number}-instructions">${instructions}</li>
         <li class="Recording-item Recording-status" data-id="list-item-${number}-status">${statusText}</li>
       </ul>
-    </a>
+    </span>
   </li>
 `;
 

@@ -7,14 +7,14 @@
   <link rel="stylesheet" type="text/css" href="static/index.css" />
 </head>
 
-<body data-id="body">
+<body class="Body" data-id="body">
   <!-- TODO: get rid of the below form after we're done; only used as reference, but may also be used as a backup for browsers that don't support getUserMedia() -->
   <form style="display: none" enctype="multipart/form-data" action="/upload" method="POST">
     <input name="noise" type="file" accept="audio/*;capture=microphone">
     <br>
     <input type="submit">
   </form>
-  <div class="RecordingList" data-id="list">
+  <div class="RecordingList" data-id="list" role="menu">
     <ul class="RecordingList-container" data-id="list-container"></ul>
   </div>
   <div class="Tray">
@@ -35,7 +35,7 @@
                 <!-- TODO: only show this if there are actually video examples -->
                 <h3 class="Subheader">Watch a video of the mouth movement:</h3>
                 <p class="Recorder-exampleVideo">
-                  <a href="#">Video of mouth movement</a>
+                  <a class="Link" href="#">Video of mouth movement</a>
                 </p>
               </div>
             </div>
@@ -66,7 +66,7 @@
             <h3 class="Subheader">Review your recording:</h3>
             <div data-id="review-player-list"></div>
           </p>
-          <a data-id="download" class="DownloadLink DownloadLink--disabled">Download</a>
+          <a class="Link" data-id="download" class="DownloadLink DownloadLink--disabled">Download</a>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-body {
+.Body {
   height: 100%;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol"
 }
@@ -6,10 +6,6 @@ body {
 p {
   margin-top: 0;
   margin-bottom: 0;
-}
-
-a {
-  text-decoration: none;
 }
 
 /* generic */
@@ -67,7 +63,7 @@ a {
 }
 .Dialog--introduction {
   background-color: rgba(255, 255, 255, 0.9);
-  height: calc(100% - 60px);
+  max-height: calc(100% - 60px);
   margin: 30px;
   overflow-y: scroll;
 }
@@ -83,6 +79,10 @@ a {
 /* Introduction */
 .Introduction {
   box-sizing: border-box;
+}
+
+.Introduction-heading {
+  margin-top: 0
 }
 
 .Introduction-paragraph {
@@ -125,6 +125,8 @@ a {
   color: #000000;
   text-decoration: none;
   cursor: pointer;
+  font: inherit;
+  padding: 0;
 }
 .Recording--selected {
   background-color: #e9cccc;
